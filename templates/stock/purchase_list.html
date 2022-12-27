@@ -15,7 +15,7 @@
             grid-template-columns: 30px 90px 75px 75px 300px 125px 175px;
         }
 
-        .metal_type {
+        .stock_type {
             width: 100px;
             text-align: right;
             margin-right: 10px
@@ -35,17 +35,17 @@
         }
 
     </style>
-    <title>Django貴金属の取引記録</title>
+    <title>Django証券の取引記録</title>
 </head>
 <body>
-<h1>Django貴金属の取引記録ページです</h1>
+<h1>Django証券の取引記録ページです</h1>
 <section class="section">
     本来は、管理者しか見れないページですが、今回は、誰でも見れるようにしています。<br>
     <ul>
         <li id="title">
             <ul class="ul-flex">
                 <li class="purchase-id">id</li>
-                <li class="purchase-metal">証券</li>
+                <li class="purchase-stock">証券</li>
                 <li class="purchase-total-price">単価</li>
                 <li class="purchase-weight">株数</li>
                 <li class="purchase-email">email</li>
@@ -68,8 +68,8 @@
         {% endfor %}
     </ul>
     <p>
-        <a href="{% url 'metal:buy' %}">貴金属を売る</a><br>
-        <a href="#">貴金属を買う(販売は休止しています)</a><br>
+        <a href="{% url 'stock:buy' %}">株券を売る</a><br>
+        <a href="#">株券を買う(販売は休止しています)</a><br>
         <a href="{% url 'main:index' %}">トップに戻る</a><br>
     </p>
 
