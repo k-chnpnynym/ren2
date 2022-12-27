@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon-gold.ico' %}">
+    <style>
+        footer {
+            border-top: 20px;
+            border-top: solid 1px #e6e6e6;
+        }
+
+        #main {
+            background-color: mediumseagreen;
+            padding: 20px;
+        }
+
+        div#company-link-area {
+            background-color: mediumturquoise;
+            border: darkblue 1px solid;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        a.company-link:hover {
+            color: crimson;
+            background-color: gold;
+        }
+
+        #view-basic-samples ul li ul {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        #view-basic-samples ul li {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        footer ul {
+            display: flex;
+        }
+
+        footer ul li {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+    </style>
+    <title>Django貴金属/Django証券の合同サイト</title>
+</head>
+<body>
+<section class="section" id="main">
+    <!--  ヘッダーとリンク  -->
+    <h1>Django貴金属/Django証券の合同サイトへようこそ！</h1>
+    <div id="company-link-area">
+        <p>このドメインでは、以下の会社がウェブサイトを運営しています</p>
+        <div class="company-info">
+            <a href="{% url 'metal:redirect' %}" id="django-metal" class="company-link metal">
+                Django貴金属株式会社
+            </a><br>
+        </div>
+        <div class="company-info">
+            <a href="{% url 'stock:redirect' %}" id="django-stock" class="company-link stock">
+                Django証券株式会社
+            </a>
+        </div>
+    </div>
+</section>
+<section class="section" id="view-basic-samples">
+    <ul>
+        <li>
+            <span>正常系のサンプル</span>
+            <ul>
+                <li><a href="{% url 'main:sample01' %}">sample01</a></li>
+                <li><a href="{% url 'main:sample11' %}">sample11</a></li>
+                <li><a href="{% url 'main:sample12' %}">sample12</a></li>
+                <li><a href="{% url 'main:sample13' %}">sample13</a></li>
+                <li><a href="{% url 'main:sample21' %}">sample21</a></li>
+                <li><a href="{% url 'main:sample22' %}">sample22</a></li>
+                <li><a href="{% url 'main:sample23' %}">sample23</a></li>
+            </ul>
+        </li>
+        <li>
+            <span>404エラーのサンプル(not found)</span>
+            <ul>
+                <li><a href="/hoge/fuga/">404(通常)</a></li>
+                <li><a href="{% url 'stock:detail' pk=100 %}">404(raise)</a></li>
+                <li><a href="{% url 'metal:detail' pk=100 %}">404(get_object_or_404)</a></li>
+            </ul>
+        </li>
+        <li>
+            <span>403エラーのサンプル(forbidden)</span>
+            <ul>
+                <li><a href="{% url 'main:normal_403' %}">403(通常)</a></li>
+                <li><a href="{% url 'main:normal_403_class' %}">403(HttpResponseForbidden)</a></li>
+                <li><a href="{% url 'main:raise_403' %}">403(raise)</a></li>
+            </ul>
+        </li>
+        <li>
+            <span>400エラーのサンプル(bad request)</span>
+            <ul>
+                <li><a href="{% url 'main:normal_400' %}">400(ステータスコード指定)</a></li>
+                <li><a href="{% url 'main:normal_400_class' %}">400(BadRequest)</a></li>
+                <li><a href="{% url 'main:raise_400' %}">400(raise)</a></li>
+            </ul>
+        </li>
+        <li>
+            <span>500エラーのサンプル(internal server error)</span>
+            <ul>
+                <li><a href="{% url 'main:raise_500' %}">500(raise)</a></li>
+            </ul>
+        </li>
+    </ul>
+</section>
+<footer class="footer-area">
+    <ul>
+        <li><a href="{% url 'main:about' %}">初めての方へ</a></li>
+        <li><a href="{% url 'main:reference' %}">リファレンス</a></li>
+        <li><a href="#" target="_blank">運営者紹介</a></li>
+        <li><a href="#" target="_blank">お問い合わせ</a></li>
+    </ul>
+</footer>
+</body>
+</html>
